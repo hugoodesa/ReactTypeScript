@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ContainerBody, Container, Form, Input, Button } from "./components/UI";
+import { GlobalStyled } from "./components/GlobalStyled";
+import TabelaNegociacoes from "./components/TabelaNegociacoes";
+import NegociacoesProvider from "./components/Provider";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContainerBody>
+      <GlobalStyled />
+      <Container>
+        <NegociacoesProvider>
+          <Form onSubmit={(e) => e.preventDefault()}>
+            <Input type="number" placeholder="Data" />
+            <Input type="number" placeholder="Preco" />
+            <Input type="number" placeholder="Quantidade" />
+            <Button>Adicionar negociacao</Button>
+          </Form>
+          <TabelaNegociacoes />
+        </NegociacoesProvider>
+      </Container>
+    </ContainerBody>
   );
 }
 
